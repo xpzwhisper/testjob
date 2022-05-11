@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const StyledForm = styled.form`
+export const StyledForm = styled.div`
   display: flex;
   margin: 0 auto;
   max-width: 200px;
@@ -17,5 +17,10 @@ export const StyledForm = styled.form`
     width: 100%;
     padding: 2px 0;
     margin: 2px 0;
+  }
+  /*------------------------ */
+  .form_product_count {
+    display: flex;
+    justify-content: center;
   }
 `;

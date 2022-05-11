@@ -6,21 +6,25 @@ import { Error } from "./components/Error";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GlobalStyles from "./components/Global";
 import Container from "./components/Container";
+import { CartProvider } from "./components/CartContext";
+
 function App() {
   return (
     <>
-      <GlobalStyles />
-      <Router>
-        <Container>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/form" element={<Form />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="*" element={<Error />} />
-          </Routes>
-        </Container>
-      </Router>
+      <CartProvider>
+        <GlobalStyles />
+        <Router>
+          <Container>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/form" element={<Form />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="*" element={<Error />} />
+            </Routes>
+          </Container>
+        </Router>
+      </CartProvider>
     </>
   );
 }
