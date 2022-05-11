@@ -11,3 +11,15 @@
 - components folder
   - first main components
 - installed react router dom for page navigation
+
+---
+
+###### 14:34 11/05/2022
+
+###### styled components / global css
+
+- installed styled components
+  - created Global.js with CSS reset parameters
+  - created Container.js containing general page parameters (CSS)
+- setting up header CSS using classnames as requested in combination with styled components
+- setting up Error.js for routing to error page in case of invalid URL attempt
