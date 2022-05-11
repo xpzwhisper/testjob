@@ -1,8 +1,7 @@
 import { StyledHeader } from "./Header.styled";
-import { useNavigate } from "react-router-dom";
-export const Header = () => {
-  let navigate = useNavigate();
+import { Link } from "react-router-dom";
 
+export const Header = () => {
   return (
     <>
       <StyledHeader>
@@ -11,38 +10,17 @@ export const Header = () => {
           <div className="header__cart">this is cart</div>
         </div>
         <nav className="header__navbar">
-          <div className="header__navbar_item">
-            <button
-              className="header__navbar_button"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Home
-            </button>
-          </div>
+          <Link to={"/"}>
+            <button className="header__navbar_button">Home</button>
+          </Link>
 
-          <div className="header__navbar_item">
-            <button
-              className="header__navbar_button"
-              onClick={() => {
-                navigate("/form");
-              }}
-            >
-              Form
-            </button>
-          </div>
+          <Link to={"/form"}>
+            <button className="header__navbar_button">Form</button>
+          </Link>
 
-          <div className="header__navbar_item">
-            <button
-              className="header__navbar_button"
-              onClick={() => {
-                navigate("/products");
-              }}
-            >
-              Products
-            </button>
-          </div>
+          <Link to={"/products"}>
+            <button className="header__navbar_button">Products</button>
+          </Link>
         </nav>
       </StyledHeader>
     </>

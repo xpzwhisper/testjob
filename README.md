@@ -32,3 +32,12 @@
 
 - created navbar
   - linked navbar buttons to corresponding routing destinations
+
+---
+
+###### 16:13: 11/05/2022
+
+###### form styling / useNavigate -> Link
+
+- created form and styled it
+- changed UseNavigate to Link from React router - looks simpler and cleaner code
