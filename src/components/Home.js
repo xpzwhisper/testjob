@@ -1,3 +1,14 @@
+import { StyledHome } from "./Home.styled";
+import { Row, Column } from "./Grid";
+
 export const Home = () => {
-  return <div>We love React!</div>;
+  return (
+    <StyledHome>
+      <Row>
+        <Column>
+          <div>We love React!</div>
+        </Column>
+      </Row>
+    </StyledHome>
+  );
 };

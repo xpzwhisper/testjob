@@ -1,30 +1,32 @@
 import { StyledForm } from "./Form.styled";
 import { useContext } from "react";
-import CartContext from "./CartContext";
+import MainContext from "./MainContext";
 import { useState } from "react";
 
 export const Form = () => {
   const [image, setImage] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const { products, addProduct } = useContext(CartContext);
+  const { products, addProduct } = useContext(MainContext);
 
   const addProductfn = (e) => {
     e.preventDefault();
-    if (name !== "" && price !== "") {
-      addProduct(image, name, price);
+    if (name !== "" && price !== "" && image.length !== 0) {
+      const key = Math.floor(Math.random() * 10000);
+      addProduct(image, name, price, key);
       setName("");
       setPrice("");
     }
   };
+
   return (
     <>
       <StyledForm>
-        <form onSubmit={addProductfn} className="form">
+        <div className="form">
           <label className="form_input_title">Image:</label>
           <input
             onChange={(e) => {
-              setImage(e.target.files);
+              setImage(e.target.files[0]);
             }}
             type="file"
           />
@@ -46,7 +48,9 @@ export const Form = () => {
             value={price}
             className="form_input_box"
           />
-          <input type="submit" value="submit " className="form_button" />
+          <button onClick={addProductfn} className="form_button">
+            Submit
+          </button>
           {products.length > 0 ? (
             <div className="form_product_count">
               <label className="form_product_count_label">Product count:</label>
@@ -58,7 +62,7 @@ export const Form = () => {
           ) : (
             ""
           )}
-        </form>
+        </div>
       </StyledForm>
     </>
   );

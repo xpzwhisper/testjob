@@ -35,15 +35,6 @@
 
 ---
 
-###### 16:13 11/05/2022
-
-###### form styling / useNavigate -> Link
-
-- created form and styled it
-- changed UseNavigate to Link from React router - looks simpler and cleaner code
-
----
-
 ###### 19:59 11/05/2022
 
 ###### form / context api / addProduct
@@ -52,3 +43,12 @@
 - changed UseNavigate to Link from React router - looks simpler and cleaner code
 - created context for sharing states between components residing various hierarchical levels
 - created states for form inputs and addProduct function to save the input data to the products array
+
+---
+
+###### 11:12 12/05/2022
+
+###### css styling / image / forms entry restriction
+
+- added styling to card, heading, error page, etc
+- added shopping cart icon from Ant Icons

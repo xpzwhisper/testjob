@@ -1,18 +1,26 @@
 import { useContext } from "react";
-import CartContext from "./CartContext";
+import MainContext from "./MainContext";
+import { Column, Row } from "./Grid";
+import { Card } from "./Card";
 
 export const Products = () => {
-  const { products } = useContext(CartContext);
+  const { products } = useContext(MainContext);
   console.log(products);
   return (
     <>
       <div>
-        {products.map((product) => (
-          <div>
-            <div>{product.name}</div>
-            <div>{product.price}</div>
-          </div>
-        ))}
+        <Row>
+          {products.map((product) => (
+            <Column xs="12" sm="6" md="4" lg="4">
+              <Card
+                key={product.id}
+                name={product.name}
+                price={product.price}
+                image={product.image}
+              />
+            </Column>
+          ))}
+        </Row>
       </div>
     </>
   );

@@ -6,12 +6,12 @@ import { Error } from "./components/Error";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GlobalStyles from "./components/Global";
 import Container from "./components/Container";
-import { CartProvider } from "./components/CartContext";
+import { MainProvider } from "./components/MainContext";
 
 function App() {
   return (
     <>
-      <CartProvider>
+      <MainProvider>
         <GlobalStyles />
         <Router>
           <Container>
@@ -24,7 +24,7 @@ function App() {
             </Routes>
           </Container>
         </Router>
-      </CartProvider>
+      </MainProvider>
     </>
   );
 }
