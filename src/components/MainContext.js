@@ -7,14 +7,9 @@ export function MainProvider({ children }) {
   const addProduct = (image, name, price, id) => {
     setProducts((prevState) => [...prevState, { image, name, price, id }]);
   };
-  const [pagetitle, setPagetitle] = useState("");
-  const updateTitle = (pagetitle) => {
-    setPagetitle(pagetitle);
-  };
+
   return (
-    <MainContext.Provider
-      value={{ products, addProduct, updateTitle, pagetitle }}
-    >
+    <MainContext.Provider value={{ products, addProduct }}>
       {children}
     </MainContext.Provider>
   );

@@ -31,4 +31,7 @@ export const StyledHeader = styled.div`
     font-size: 2em;
     color: #444;
   }
+  .header__cart {
+    margin-right: 30px;
+  }
 `;

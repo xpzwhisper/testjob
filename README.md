@@ -52,3 +52,12 @@
 
 - added styling to card, heading, error page, etc
 - added shopping cart icon from Ant Icons
+
+---
+
+###### 10:55 13/05/2022
+
+###### improved css / reset filename in form
+
+- shrunk card width
+- created function for resetting the filename after submitting

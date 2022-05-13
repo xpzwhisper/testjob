@@ -2,6 +2,7 @@ import { StyledForm } from "./Form.styled";
 import { useContext } from "react";
 import MainContext from "./MainContext";
 import { useState } from "react";
+import { useRef } from "react";
 
 export const Form = () => {
   const [image, setImage] = useState([]);
@@ -9,13 +10,20 @@ export const Form = () => {
   const [price, setPrice] = useState("");
   const { products, addProduct } = useContext(MainContext);
 
+  const ref = useRef();
+
+  const reset = () => {
+    ref.current.value = "";
+  };
   const addProductfn = (e) => {
     e.preventDefault();
+
     if (name !== "" && price !== "" && image.length !== 0) {
       const key = Math.floor(Math.random() * 10000);
       addProduct(image, name, price, key);
       setName("");
       setPrice("");
+      reset();
     }
   };
 
@@ -29,6 +37,7 @@ export const Form = () => {
               setImage(e.target.files[0]);
             }}
             type="file"
+            ref={ref}
           />
           <label className="form_input_title">Name:</label>
           <input
