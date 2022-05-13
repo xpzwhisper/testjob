@@ -1,5 +1,10 @@
 import styled from "styled-components";
 export const StyledCard = styled.div`
+  .card:hover {
+    -webkit-box-shadow: 12px 12px 16px 8px rgba(0, 0, 0, 0.84);
+    box-shadow: 12px 12px 16px 8px rgba(0, 0, 0, 0.84);
+    background-color: #efef88;
+  }
   .card {
     display: flex;
     flex-wrap: wrap;
@@ -7,11 +12,12 @@ export const StyledCard = styled.div`
     padding: 10px;
     border: 1px solid black;
     border-radius: 4px;
-    width: 200px;
+    width: 195px;
     height: 200px;
-    background-color: beige;
+    background-color: #f5f5dc;
     margin: 15px 0;
     text-align: center;
+    transition: box-shadow 0.5s, background-color 1.2s;
   }
   .card > * {
     width: 100%;

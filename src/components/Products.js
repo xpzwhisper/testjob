@@ -11,7 +11,7 @@ export const Products = () => {
       <div>
         <Row>
           {products.map((product) => (
-            <Column xs="12" sm="6" md="4" lg="4">
+            <Column xs="12" sm="6" md="4" lg="3">
               <Card
                 key={product.id}
                 name={product.name}

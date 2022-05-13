@@ -20,7 +20,7 @@ export const Row = styled.div`
 export const Column = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 
   ${({ xs }) => (xs ? getWidthString(xs) : "width: 100%")};
 

@@ -61,3 +61,11 @@
 
 - shrunk card width
 - created function for resetting the filename after submitting
+
+---
+
+###### 23:16 13/05/2022
+
+###### added styling to card
+
+- added transition effect for card background color and shadow
