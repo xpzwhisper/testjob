@@ -34,4 +34,9 @@ export const StyledHeader = styled.div`
   .header__cart {
     margin-right: 30px;
   }
+  .header__cart > span {
+    font-size: 1.3em;
+    margin-left: 2px;
+    position: relative;
+  }
 `;

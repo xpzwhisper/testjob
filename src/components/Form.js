@@ -1,9 +1,9 @@
 import { StyledForm } from "./Form.styled";
 import { useContext } from "react";
-import MainContext from "./MainContext";
+import MainContext from "./helpers/MainContext";
 import { useState } from "react";
 import { useRef } from "react";
-import useKey from "./UseKey";
+import useKey from "./helpers/UseKey";
 
 export const Form = () => {
   let { products, addProduct } = useContext(MainContext);
@@ -35,7 +35,7 @@ export const Form = () => {
   };
   useKey("Enter", handleKeyEnter);
 
-  // function for testing if inputbox is empty
+  // function for testing if inputboxes are empty
   function inputBoxFilled(name, price) {
     if (price === "" && name === "") {
       return { price: false, name: false };
@@ -55,6 +55,7 @@ export const Form = () => {
   const priceRegex = new RegExp("^\\d{1,5}\\.\\d{1,2}$|^\\d{1,5}$");
   // regex for matching only 18 characters
   const nameRegex = new RegExp("^.{0,18}$");
+
   // -----------------------------------------------------------------------------
   // for matching only letters and numbers
   // + ",.-:"
@@ -73,7 +74,7 @@ export const Form = () => {
     if (!nameRegex.test(name)) {
       setInputBox({ ...inputBox, nameTooLong: true });
     }
-    if (name !== "" && price !== "" && file !== null) {
+    if (name !== "" && price !== "" && file !== "") {
       if (priceRegex.test(price)) {
         const id = Math.floor(Math.random() * 10000);
         addProduct(file, name, price, id);
@@ -90,6 +91,7 @@ export const Form = () => {
     <>
       <StyledForm>
         <div className="form">
+          {/* -FILE--------------------------------------- */}
           <label className="form_input_title">
             Image:
             {typeof file.size !== "undefined"
@@ -115,7 +117,7 @@ export const Form = () => {
               ref={ref}
             />
           </label>
-          {/* -------------------------------------------- */}
+          {/* -NAME--------------------------------------- */}
           <label className="form_input_title">
             Name:{inputBox.nameTooLong ? " Name too long" : ""}
           </label>
@@ -132,7 +134,7 @@ export const Form = () => {
                 : "form_input_box input_error"
             }
           />
-          {/* -------------------------------------------- */}
+          {/* -PRICE--------------------------------------- */}
           <label className="form_input_title">
             Price:
             {!priceTypeIsNumber && priceTypeIsNumber !== null

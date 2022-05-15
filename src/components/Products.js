@@ -1,23 +1,16 @@
 import { useContext } from "react";
-import MainContext from "./MainContext";
-import { Row } from "./Grid";
+import MainContext from "./helpers/MainContext";
+import { Row } from "./helpers/Grid";
 import { Card } from "./Card";
 
 export const Products = () => {
   const { products } = useContext(MainContext);
-  console.log(products);
   return (
     <>
       <div>
         <Row>
-          {products.map((product, index) => (
-            <Card
-              key={index}
-              name={product.name}
-              price={product.price}
-              image={product.image}
-              id={product.id}
-            />
+          {products.map((product) => (
+            <Card product={product} key={product.id} products={products} />
           ))}
         </Row>
       </div>

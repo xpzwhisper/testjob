@@ -1,5 +1,5 @@
 import { StyledError } from "./Error.styled";
-import { Row, Column } from "./Grid";
+import { Row, Column } from "./helpers/Grid";
 
 export const Error = () => {
   return (
