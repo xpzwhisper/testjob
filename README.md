@@ -82,3 +82,22 @@
   - wrong number format => text appears,
   - after picking file => shows file size
 - added enter key as form submission
+
+---
+
+###### 22:39 15/05/2022
+
+###### add to cart, delete product functinality and context fns, more styling
+
+- Created the following functionalities
+  - product adding to the cart
+  - product deleteion from the Products page (from products array)
+  - cart item count (cartItems.length)
+- CSS
+
+  - used Ant Icons for add to cart symbol and product deletion symbol
+
+- further potential development:
+  - check if an item already exists in the cart (matched by id)
+  - cart page for removing items or changing quantities
+  - product edit option
