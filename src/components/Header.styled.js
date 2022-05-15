@@ -17,6 +17,11 @@ export const StyledHeader = styled.div`
   .header__title {
     margin-left: 50px;
   }
+  .header__title {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    color: #444;
+  }
   /* Navbar------------- */
   .header__navbar {
     display: flex;
@@ -25,11 +30,6 @@ export const StyledHeader = styled.div`
   .header__navbar_button {
     width: 80px;
     height: 30px;
-  }
-  .header__title {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 2em;
-    color: #444;
   }
   .header__cart {
     margin-right: 30px;

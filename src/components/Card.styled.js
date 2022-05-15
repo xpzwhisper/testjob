@@ -24,7 +24,7 @@ export const StyledCard = styled.div`
   }
   .card__product_image {
     display: block;
-    max-width: 220px;
+    max-width: 190px;
     max-height: 130px;
     height: auto;
     width: auto;
@@ -37,7 +37,7 @@ export const StyledCard = styled.div`
     display: flex;
     width: 100%;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
   }
   .header__cart {
     margin-right: 30px;

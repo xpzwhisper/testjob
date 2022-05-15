@@ -69,3 +69,16 @@
 ###### added styling to card
 
 - added transition effect for card background color and shadow
+
+---
+
+###### 16:53 15/05/2022
+
+###### improved form entry restr. + added extra features
+
+- styling form according to input
+  - empty box => border red,
+  - too long string => text appears,
+  - wrong number format => text appears,
+  - after picking file => shows file size
+- added enter key as form submission
