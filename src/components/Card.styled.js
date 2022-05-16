@@ -28,11 +28,11 @@ export const StyledCard = styled.div`
     height: 130px;
   }
   .card__product_image {
-    display: block;
-    max-width: 190px;
-    max-height: 130px;
-    height: auto;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
     width: auto;
+    height: auto;
   }
   .card__product_name,
   .card__product_price {

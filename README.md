@@ -101,3 +101,12 @@
   - check if an item already exists in the cart (matched by id)
   - cart page for removing items or changing quantities
   - product edit option
+
+---
+
+###### 20:18 16/05/2022
+
+###### fixed product image displaying
+
+- fixed product image displaying to fit without stretch
+  - used object-fit: contain; for that
