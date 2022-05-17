@@ -9,20 +9,20 @@ export const Form = () => {
   let { products, addProduct } = useContext(MainContext);
 
   let filePickedText = "--- File picked ---";
-  let [fileSelState, setFileSelState] = useState({
+  let [fileState, setFileState] = useState({
     picked: false,
     text: "Pick a file...",
   });
 
-  let [priceTypeIsNumber, setPriceTypeIsNumber] = useState(null);
+  let [priceTypeIsNumber, setPriceTypeIsNumber] = useState(true);
   const [file, setFile] = useState("");
   let [name, setName] = useState("");
   let [price, setPrice] = useState("");
   let [inputBox, setInputBox] = useState({
-    name: true,
-    price: true,
-    nameTooLong: false,
+    nameBlank: false,
+    priceBlank: false,
   });
+  let [nameTooLong, setNameTooLong] = useState(false);
 
   // resetting the value of <input type="file"> for the re-use of the same file
   const ref = useRef();
@@ -36,18 +36,18 @@ export const Form = () => {
   useKey("Enter", handleKeyEnter);
 
   // function for testing if inputboxes are empty
-  function inputBoxFilled(name, price) {
+  function inputBoxIsFilled(name, price) {
     if (price === "" && name === "") {
-      return { price: false, name: false };
+      return { priceBlank: true, nameBlank: true };
     }
     if (price === "" && name !== "") {
-      return { price: false, name: true };
+      return { priceBlank: true, nameBlank: false };
     }
     if (price !== "" && name === "") {
-      return { price: true, name: false };
+      return { priceBlank: false, nameBlank: true };
     }
     if (price !== "" && name !== "") {
-      return { price: true, name: true };
+      return { priceBlank: false, nameBlank: false };
     }
   }
   // ------------------------------------
@@ -63,17 +63,17 @@ export const Form = () => {
   // const nameRegex = new RegExp("^[\u00c0-\u00fCA-Za-z0-9\\,\\.\\-\\:]{0,18}$");
   // -----------------------------------------------------------------------------
 
-  const addProductfn = (e) => {
+  const addProductFn = (e) => {
     e.preventDefault();
 
-    setInputBox(inputBoxFilled(name, price));
+    setInputBox(inputBoxIsFilled(name, price));
 
     if (!priceRegex.test(price) && price !== "") {
       setPriceTypeIsNumber(false);
     }
-    if (!nameRegex.test(name)) {
-      setInputBox({ ...inputBox, nameTooLong: true });
-    }
+
+    !nameRegex.test(name) ? setNameTooLong(true) : setNameTooLong(false);
+
     if (name !== "" && price !== "" && file !== "") {
       if (priceRegex.test(price)) {
         const id = Math.floor(Math.random() * 10000);
@@ -82,7 +82,7 @@ export const Form = () => {
         setPrice("");
         setFile("");
         resetFile();
-        setFileSelState({ picked: false, text: "Pick a file..." });
+        setFileState({ picked: false, text: "Pick a file..." });
       }
     }
   };
@@ -101,17 +101,17 @@ export const Form = () => {
           <label
             id="filePicker"
             className={
-              fileSelState.picked
+              fileState.picked
                 ? "form_button__file file_picked"
                 : "form_button__file"
             }
           >
-            {fileSelState.text}
+            {fileState.text}
             <input
               className=""
               onChange={(e) => {
                 setFile(e.target.files[0]);
-                setFileSelState({ picked: true, text: filePickedText });
+                setFileState({ picked: true, text: filePickedText });
               }}
               type="file"
               ref={ref}
@@ -119,49 +119,51 @@ export const Form = () => {
           </label>
           {/* -NAME--------------------------------------- */}
           <label className="form_input_title">
-            Name:{inputBox.nameTooLong ? " Name too long" : ""}
+            Name:{nameTooLong ? " Name too long" : ""}
           </label>
           <input
             onChange={(e) => {
               setName(e.target.value);
-              setInputBox({ ...inputBox, name: true, nameTooLong: false });
+              setInputBox({
+                ...inputBox,
+                nameBlank: false,
+              });
+              setNameTooLong(false);
             }}
             type="text"
             value={name}
             className={
-              inputBox.name || inputBox.name === null
-                ? "form_input_box"
-                : "form_input_box input_error"
+              nameTooLong || inputBox.nameBlank
+                ? "form_input_box input_error"
+                : "form_input_box"
             }
           />
           {/* -PRICE--------------------------------------- */}
           <label className="form_input_title">
             Price:
-            {!priceTypeIsNumber && priceTypeIsNumber !== null
-              ? " format (12345.67)"
-              : ""}
+            {!priceTypeIsNumber ? " format (12345.67)" : ""}
           </label>
           <input
             // placeholder="x.xx"
             onChange={(e) => {
               setPrice(e.target.value);
               setPriceTypeIsNumber(true);
-              setInputBox({ ...inputBox, price: true });
+              setInputBox({ ...inputBox, priceBlank: false });
             }}
             type="text"
             value={price}
             className={
-              inputBox.price === true && priceTypeIsNumber === true
+              !inputBox.priceBlank && priceTypeIsNumber
                 ? "form_input_box"
-                : inputBox.price === false || priceTypeIsNumber === false
+                : !inputBox.priceBlank || priceTypeIsNumber // if either matches the other must be opposite based on the previous test (both match)
                 ? "form_input_box input_error"
                 : "form_input_box"
             }
           />
-          {/* -------------------------------------------- */}
+          {/* -BUTTON-------------------------------------- */}
           <button
             id="submitButton"
-            onClick={addProductfn}
+            onClick={addProductFn}
             className="form_button__submit"
           >
             Submit

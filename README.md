@@ -110,3 +110,15 @@
 
 - fixed product image displaying to fit without stretch
   - used object-fit: contain; for that
+
+---
+
+###### 07:18 17/05/2022
+
+###### renamed variables and functions / fixed syntax usage and logic
+
+- changed the names of variables and functions to make code look more readable and self-explanatory
+  - longer names using camel-case type of naming
+- fixed syntax usage and logic in Form.js
+  - used ternary instead of if statement
+  - fixed logic in the className attribute for displaying css classes correctly
